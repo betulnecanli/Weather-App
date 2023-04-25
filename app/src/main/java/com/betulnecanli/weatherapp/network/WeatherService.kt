@@ -11,8 +11,8 @@ import retrofit2.http.Query
 interface WeatherService {
     @GET("v1/forecast")
     fun getWeatherResult(
-        @Query("latitude") latitude: Double = 40.7750,
-        @Query("longitude") longitude: Double = 29.9480,
+        @Query("latitude") latitude: Double = 25.772915,
+        @Query("longitude") longitude: Double = -80.1983,
         @Query("current_weather") currentWeather: Boolean = true,
         @Query("daily") daily: String = "weathercode,apparent_temperature_max,apparent_temperature_min",
         @Query("timezone") timezone: String = "auto",

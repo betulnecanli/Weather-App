@@ -25,7 +25,7 @@ class HomeAdapter(weatherResponse: WeatherResponse):
                      maxTemp : Double
             ){
 
-                if (adapterPosition == Constants.VIEW_TYPE_CURRENT_DAY) {
+                if (adapterPosition == Constants.CURRENT_DAY) {
                     val binding = ItemCurrentWeatherBinding.bind(itemView)
                     binding.apply {
                         currentWeatherTV.text = currentWeather.temperature.toString().plus("C")
@@ -45,19 +45,19 @@ class HomeAdapter(weatherResponse: WeatherResponse):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view : View = when (viewType) {
-            Constants.VIEW_TYPE_CURRENT_DAY -> layoutInflater.inflate(
+            Constants.CURRENT_DAY -> layoutInflater.inflate(
                 R.layout.item_current_weather,
                 parent,
                 false
             )
-            Constants.VIEW_TYPE_NEXT_DAYS -> layoutInflater.inflate(
+            Constants.NEXT_DAYS -> layoutInflater.inflate(
                 R.layout.item_next_weather,
                 parent,
                 false
             )
             else -> throw IllegalArgumentException()
         }
-        return WeatherViewHolder(view as View)
+        return WeatherViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -66,7 +66,6 @@ class HomeAdapter(weatherResponse: WeatherResponse):
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
        holder.bind(
-
            time = dates[position],
            maxTemp = maxTem[position],
            minTemp = minTem[position]
@@ -76,8 +75,8 @@ class HomeAdapter(weatherResponse: WeatherResponse):
 
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) {
-            Constants.VIEW_TYPE_CURRENT_DAY
+            Constants.CURRENT_DAY
         } else
-            Constants.VIEW_TYPE_NEXT_DAYS
+            Constants.NEXT_DAYS
     }
 }
