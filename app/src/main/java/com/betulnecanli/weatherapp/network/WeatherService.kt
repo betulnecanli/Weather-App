@@ -6,10 +6,19 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface WeatherService {
-    @GET("v1/forecast?latitude=40.7750&longitude=29.9480&current_weather=true&daily=weathercode,apparent_temperature_max,apparent_temperature_min&timezone=auto&temperature_unit=celsius&forecast_days=14")
-    fun getWeatherResult() : Call<WeatherResponse>
+    @GET("v1/forecast")
+    fun getWeatherResult(
+        @Query("latitude") latitude: Double = 40.7750,
+        @Query("longitude") longitude: Double = 29.9480,
+        @Query("current_weather") currentWeather: Boolean = true,
+        @Query("daily") daily: String = "weathercode,apparent_temperature_max,apparent_temperature_min",
+        @Query("timezone") timezone: String = "auto",
+        @Query("temperature_unit") temperatureUnit: String = "celsius",
+        @Query("forecast_days") forecastDays: Int = 14
+    ) : Call<WeatherResponse>
 
     companion object{
 

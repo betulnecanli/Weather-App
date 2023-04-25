@@ -24,6 +24,7 @@ class HomeAdapter(weatherResponse: WeatherResponse):
                      minTemp : Double,
                      maxTemp : Double
             ){
+
                 if (adapterPosition == Constants.VIEW_TYPE_CURRENT_DAY) {
                     val binding = ItemCurrentWeatherBinding.bind(itemView)
                     binding.apply {
@@ -65,6 +66,7 @@ class HomeAdapter(weatherResponse: WeatherResponse):
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
        holder.bind(
+
            time = dates[position],
            maxTemp = maxTem[position],
            minTemp = minTem[position]

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginHorizontal="25dp"
+        android:layout_marginStart="10dp"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
         >
@@ -19,21 +19,12 @@
             android:text="Date"
             android:gravity="center"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
             android:textSize="15sp"
             android:textStyle="bold"
             android:layout_marginHorizontal="5dp"
             />
-        <TextView
-            android:id="@+id/tempTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="30"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:textStyle=""
-            android:layout_marginHorizontal="5dp"
-            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
