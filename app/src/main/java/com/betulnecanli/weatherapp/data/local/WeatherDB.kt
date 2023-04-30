@@ -7,13 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.betulnecanli.weatherapp.model.CurrentWeather
 import com.betulnecanli.weatherapp.model.Daily
-import com.betulnecanli.weatherapp.model.DailyUnits
 import com.betulnecanli.weatherapp.model.WeatherResponse
 import com.betulnecanli.weatherapp.util.DatabaseConverter
 
 @Database(
-    entities = [WeatherResponse::class, CurrentWeather::class, DailyUnits::class, Daily::class],
-    version = 1,
+    entities = [WeatherResponse::class, CurrentWeather::class, Daily::class],
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(DatabaseConverter::class)

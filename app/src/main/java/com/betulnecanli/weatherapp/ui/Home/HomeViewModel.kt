@@ -31,22 +31,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 weatherResponse: Response<WeatherResponse>
             ) {
                 if (weatherResponse.isSuccessful) {
-                    val weatherResponse = weatherResponse.body()
-                    _weatherData.value = weatherResponse
-                    viewModelScope.launch {
-                        withContext(Dispatchers.IO) { // Run database operations on a background thread
-                            weatherDb.weatherDao().deleteAll()
-                            if (weatherResponse != null) {
-                                weatherDb.weatherDao().insert(weatherResponse)
-                            }
-                        }
-
-
-                    }
-
-
+                    val response = weatherResponse.body()
+                    _weatherData.value = response
+                    Thread(Runnable {
+                        weatherDb.weatherDao().deleteAll()
+                        response?.let { weatherDb.weatherDao().insert(it) }
+                    }).start()
                 }
             }
+
 
 
 
@@ -59,7 +52,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
     fun getDataFromDB() = viewModelScope.launch {
-        _weatherData.value = weatherDb.weatherDao().getAll()
+        Thread(Runnable {
+            val weatherList = weatherDb.weatherDao().getAll()
+            _weatherData.postValue(weatherList)
+        }).start()
     }
 
 
