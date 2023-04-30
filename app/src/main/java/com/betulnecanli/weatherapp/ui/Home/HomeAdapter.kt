@@ -15,7 +15,7 @@ class HomeAdapter(weatherResponse: WeatherResponse):
     RecyclerView.Adapter<HomeAdapter.WeatherViewHolder>() {
 
     private val currentWeather = weatherResponse.current_weather
-    private val dates = weatherResponse.daily.time
+    private val dates = weatherResponse.daily.time2
     private val minTem = weatherResponse.daily.apparent_temperature_min
     private val maxTem = weatherResponse.daily.apparent_temperature_max
 

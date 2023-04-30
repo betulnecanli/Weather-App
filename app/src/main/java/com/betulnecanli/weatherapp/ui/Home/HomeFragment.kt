@@ -1,11 +1,16 @@
 package com.betulnecanli.weatherapp.ui.Home
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.betulnecanli.weatherapp.R
@@ -32,6 +37,7 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
 
     fun initObserve(){
         viewModel.weatherData.observe(viewLifecycleOwner){
