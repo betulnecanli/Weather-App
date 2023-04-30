@@ -13,8 +13,7 @@ data class WeatherResponse(
     @Embedded
     val current_weather: CurrentWeather,
     @Embedded
-    val daily: Daily,
-
+    val daily: Daily
 )
 
 @Entity

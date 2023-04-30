@@ -39,24 +39,18 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     }).start()
                 }
             }
-
-
-
-
             override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
-              getDataFromDB()
+                Thread(Runnable {
+                    val weatherList = weatherDb.weatherDao().getAll()
+                    _weatherData.postValue(weatherList)
+                }).start()
             }
         })
 
     }
 
 
-    fun getDataFromDB() = viewModelScope.launch {
-        Thread(Runnable {
-            val weatherList = weatherDb.weatherDao().getAll()
-            _weatherData.postValue(weatherList)
-        }).start()
-    }
+
 
 
 }
