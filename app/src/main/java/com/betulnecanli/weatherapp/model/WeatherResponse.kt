@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "weather_response")
 data class WeatherResponse(
-    @PrimaryKey
-    val id: Int = 1, // we need a primary key since Room requires each entity to have one
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 1,
     @Embedded
     val current_weather: CurrentWeather,
     @Embedded

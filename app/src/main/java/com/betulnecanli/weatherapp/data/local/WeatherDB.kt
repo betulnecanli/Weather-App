@@ -12,7 +12,7 @@ import com.betulnecanli.weatherapp.util.DatabaseConverter
 
 @Database(
     entities = [WeatherResponse::class, CurrentWeather::class, Daily::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(DatabaseConverter::class)
