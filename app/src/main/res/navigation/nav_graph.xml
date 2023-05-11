@@ -9,5 +9,24 @@
         android:id="@+id/homeFragment"
         android:name="com.betulnecanli.weatherapp.ui.Home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.betulnecanli.weatherapp.ui.Detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="time"
+            app:argType="string" />
+        <argument
+            android:name="maxTemp"
+            app:argType="float" />
+        <argument
+            android:name="minTemp"
+            app:argType="float" />
+    </fragment>
 </navigation>

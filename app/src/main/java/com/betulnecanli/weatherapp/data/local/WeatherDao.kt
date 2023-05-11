@@ -7,11 +7,11 @@ import com.betulnecanli.weatherapp.model.WeatherResponse
 @Dao
 interface WeatherDao {
     @Query("SELECT * FROM weather_response")
-    fun getAll(): WeatherResponse
+     suspend fun getAll(): WeatherResponse
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(weatherResponse: WeatherResponse)
+    suspend fun insert(weatherResponse: WeatherResponse)
 
     @Query("DELETE FROM weather_response")
-    fun deleteAll()
+    suspend fun deleteAll()
 }

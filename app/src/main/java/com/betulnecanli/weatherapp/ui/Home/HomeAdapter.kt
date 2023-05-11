@@ -11,7 +11,7 @@ import com.betulnecanli.weatherapp.databinding.ItemNextWeatherBinding
 import com.betulnecanli.weatherapp.model.WeatherResponse
 import com.betulnecanli.weatherapp.util.Constants
 
-class HomeAdapter(weatherResponse: WeatherResponse):
+class HomeAdapter(weatherResponse: WeatherResponse, val onClick: (Int) -> Unit):
     RecyclerView.Adapter<HomeAdapter.WeatherViewHolder>() {
 
     private val currentWeather = weatherResponse.current_weather
@@ -20,27 +20,30 @@ class HomeAdapter(weatherResponse: WeatherResponse):
     private val maxTem = weatherResponse.daily.apparent_temperature_max
 
     inner class WeatherViewHolder(itemView : View): ViewHolder(itemView){
-            fun bind(time : String,
-                     minTemp : Double,
-                     maxTemp : Double
-            ){
+        fun bind(time : String,
+                 minTemp : Double,
+                 maxTemp : Double
+        ){
 
-                if (adapterPosition == Constants.CURRENT_DAY) {
-                    val binding = ItemCurrentWeatherBinding.bind(itemView)
-                    binding.apply {
-                        currentWeatherTV.text = currentWeather.temperature.toString().plus("C")
-                    }
+            if (adapterPosition == Constants.CURRENT_DAY) {
+                val binding = ItemCurrentWeatherBinding.bind(itemView)
+                binding.apply {
+                    currentWeatherTV.text = currentWeather.temperature.toString().plus("C")
                 }
-                else{
-                    val binding = ItemNextWeatherBinding.bind(itemView)
-                    binding.apply {
-                        dateTV.text = time.toString()
-                        minTempTV.text=minTemp.toString()
-                        maxTempTV.text = maxTemp.toString()
+            }
+            else{
+                val binding = ItemNextWeatherBinding.bind(itemView)
+                binding.apply {
+                    dateTV.text = time.toString()
+                    minTempTV.text=minTemp.toString()
+                    maxTempTV.text = maxTemp.toString()
+                    cardView.setOnClickListener {
+                        onClick(adapterPosition)
                     }
                 }
             }
         }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -65,12 +68,11 @@ class HomeAdapter(weatherResponse: WeatherResponse):
     }
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-       holder.bind(
-           time = dates[position],
-           maxTemp = maxTem[position],
-           minTemp = minTem[position]
-
-       )
+        holder.bind(
+            time = dates[position],
+            maxTemp = maxTem[position],
+            minTemp = minTem[position]
+        )
     }
 
     override fun getItemViewType(position: Int): Int {

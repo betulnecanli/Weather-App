@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "739237951883",
+    "project_id": "deneme1-9a990",
+    "storage_bucket": "deneme1-9a990.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739237951883:android:4a86746504b1f188cc578e",
+        "android_client_info": {
+          "package_name": "com.betulnecanli.weatherapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739237951883-oitk9khshihpv5cenasp040a6cpnaa3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAewWw9WKwBwxoA2GdULftGNDzdrtGuhwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739237951883-oitk9khshihpv5cenasp040a6cpnaa3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
