@@ -22,7 +22,7 @@ class HomeViewModel(private val weatherRepository: WeatherRepository) : ViewMode
     private val _weatherData = MutableLiveData<WeatherResponse?>()
     val weatherData: LiveData<WeatherResponse?> = _weatherData
 
-    fun getDataFromService() = viewModelScope.launch{
+    fun getDataFromService() = viewModelScope.launch {
         weatherRepository.getDataFromService {
             _weatherData.postValue(it)
         }
