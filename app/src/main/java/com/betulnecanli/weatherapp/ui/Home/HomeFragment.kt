@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         val factory = MyViewModelFactory(repository)
         viewModel = ViewModelProvider(requireActivity(), factory)[HomeViewModel::class.java]
 
-        viewModel.getDataFromService()
+
         initObserve()
         return binding.root
     }

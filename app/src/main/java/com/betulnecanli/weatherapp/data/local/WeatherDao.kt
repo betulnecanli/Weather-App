@@ -2,6 +2,7 @@ package com.betulnecanli.weatherapp.data.local
 
 import androidx.room.*
 import com.betulnecanli.weatherapp.model.WeatherResponse
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WeatherDao {
@@ -11,7 +12,7 @@ interface WeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
      suspend fun insert(weatherResponse: WeatherResponse)
 
-    @Query("DELETE FROM weather_response")
+     @Query("DELETE FROM weather_response")
      suspend fun deleteAll()
 }
 

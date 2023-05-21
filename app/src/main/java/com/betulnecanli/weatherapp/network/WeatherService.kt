@@ -3,6 +3,7 @@ package com.betulnecanli.weatherapp.network
 import androidx.lifecycle.LiveData
 import com.betulnecanli.weatherapp.model.WeatherResponse
 import com.betulnecanli.weatherapp.util.Constants
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -20,7 +21,7 @@ interface WeatherService {
         @Query("timezone") timezone: String = "auto",
         @Query("temperature_unit") temperatureUnit: String = "celsius",
         @Query("forecast_days") forecastDays: Int = 14
-    ) : Response<WeatherResponse>
+    ) : WeatherResponse
 
     companion object{
 

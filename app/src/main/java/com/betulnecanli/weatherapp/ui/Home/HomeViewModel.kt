@@ -9,6 +9,7 @@ import com.betulnecanli.weatherapp.model.WeatherResponse
 import com.betulnecanli.weatherapp.network.WeatherService
 import com.betulnecanli.weatherapp.repository.WeatherRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Call
@@ -19,12 +20,8 @@ import java.util.*
 
 class HomeViewModel(private val weatherRepository: WeatherRepository) : ViewModel() {
 
-    private val _weatherData = MutableLiveData<WeatherResponse?>()
-    val weatherData: LiveData<WeatherResponse?> = _weatherData
 
-    fun getDataFromService() = viewModelScope.launch {
-        weatherRepository.getDataFromService {
-            _weatherData.postValue(it)
-        }
-    }
+    val weatherData: LiveData<WeatherResponse?> = weatherRepository.getDataFromService().asLiveData()
+
+
 }
